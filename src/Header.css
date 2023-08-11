@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container1{
+    background-color: green;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bg-body-primary .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 767px) {
+    .container1 {
+      height: auto;
+    }
+    
+    .bg-body-primary .navbar {
+      flex-direction: column;
+    }
+    
+    .navbar-brand {
+      margin-right: 0; /* Remove the margin on smaller screens */
+      margin-bottom: 15px; /* Add some space between logo and other elements */
+    }
+    
+    .form-control {
+      margin-bottom: 10px; /* Add space between the search input and buttons */
+    }
+    
+    .nav-link {
+      margin-right: 0; /* Remove the margin on smaller screens */
+    }
+  }

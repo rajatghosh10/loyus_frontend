@@ -1,0 +1,19 @@
+.centered-card-container {
+    height: 100vh;
+    background-color: white;
+  }
+  
+  .custom-card {
+    width: 300px;
+    background-color: green;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(146, 114, 114, 0.1);
+  }
+  .text111{
+text-align: center;
+color: yellow;
+font-size: 30px;
+font-weight: 400px;
+font-family: 'Times New Roman', Times, serif;
+  }
+  

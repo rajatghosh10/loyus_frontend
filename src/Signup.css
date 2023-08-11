@@ -1,0 +1,73 @@
+.centered-card-container {
+  height: 100vh;
+  background-color: white;
+}
+
+.custom-card {
+  width: 600px;
+  background-color: blue;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 600px) {
+  button {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+  button {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+@keyframes blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+.blink-text {
+  display: inline-block;
+  animation: blink 3s infinite;
+}
+.custom-hr {
+  position: relative;
+  margin: 20px 0;
+  border: none;
+  height: 1px;
+  background-color: white;
+}
+
+.custom-hr::before {
+  content: "OR";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white; /* Adjust as needed */
+  padding: 0 10px; /* Add some padding to the text */
+}
+.custom-or {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.custom-line {
+  flex: 1;
+  height: 1px;
+  background-color: WHITE;
+}
+
+.custom-text {
+  padding: 0 15px;
+  font-weight: bold;
+  color: WHITE;
+}
