@@ -247,7 +247,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const minPasswordLength = 8;
-    const maxPasswordLength = 20;
+    const maxPasswordLength = 22;
     const passwordRegex =
       /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
     if (!password) {
