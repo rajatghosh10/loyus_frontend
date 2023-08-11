@@ -249,7 +249,7 @@ function Signup() {
     const minPasswordLength = 8;
     const maxPasswordLength = 22;
     const passwordRegex =
-      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,22}$/;
     if (!password) {
       console.log("Password cannot be blank");
       alert("Password cannot be blank");
