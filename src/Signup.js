@@ -53,6 +53,7 @@ const RegistrationForm = ({
             required
           />
         </div>
+
         <div>
           <input
             style={{
