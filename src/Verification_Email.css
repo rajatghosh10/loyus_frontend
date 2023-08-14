@@ -1,0 +1,65 @@
+.verification-container {
+  background-color: #f8f9fa; /* Light gray background color */
+}
+
+.verification-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.email {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.otp-input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.otp-input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.send-otp-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.send-otp-button:disabled {
+  background-color: #a9a9a9;
+  cursor: not-allowed;
+}
+
+.verify-button-container {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.verify-button {
+  background-color: #32a851;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 16px;
+}

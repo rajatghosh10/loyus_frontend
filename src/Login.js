@@ -35,7 +35,7 @@ function Login() {
       }
     } catch (error) {
       console.error("An error occurred:", error);
-      alert("Login unsuccessful, try again!");
+      alert("Login unsuccessful,network error, try again!");
       // Handle error, show error messages, etc.
     }
 
