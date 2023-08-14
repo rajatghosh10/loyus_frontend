@@ -8,6 +8,7 @@ import AfterLogInPage from "./AfterLogInPage";
 import ForgotpasswordPage from "./ForgotpasswordPage";
 import DemoLogin from "./DemoLogin";
 import WhatappRegister from "./WhatappRegister";
+import Verification_Email from "./Verification_Email";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
           <Route path="forpas" element={<ForgotpasswordPage />} />
           <Route path="demologin" element={<DemoLogin />} />
           <Route path="whatapp" element={<WhatappRegister />} />
+          <Route path="Verification_Email" element={<Verification_Email />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -11,13 +11,16 @@ const RegistrationForm = ({
   handleGetOtp,
   handleSubmit,
   handelLogin,
+  handelLogin1,
   handelBack,
   email,
   setEmail,
   otp,
   setOtp,
-  username,
-  setUsername,
+  firstname,
+  setFirstname,
+  lastname,
+  setLastname,
   password,
   setPassword,
   confirmPassword,
@@ -33,6 +36,40 @@ const RegistrationForm = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <div>
+          <input
+            style={{
+              width: "100%",
+              padding: "12px",
+              borderRadius: "10px",
+              border: "2px solid #e74c3c",
+              marginBottom: "10px",
+              fontSize: "16px",
+            }}
+            placeholder="Enter First Name..."
+            type="text"
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <input
+            style={{
+              width: "100%",
+              padding: "12px",
+              borderRadius: "10px",
+              border: "2px solid #e74c3c",
+              marginBottom: "10px",
+              fontSize: "16px",
+            }}
+            placeholder="Enter Last Name..."
+            type="text"
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
+            required
+          />
+        </div>
         <div>
           <input
             style={{
@@ -59,7 +96,7 @@ const RegistrationForm = ({
             padding: "10px",
           }}
         >
-          <button
+          {/* <button
             style={{
               background: "#e74c3c",
               color: "#fff",
@@ -79,9 +116,9 @@ const RegistrationForm = ({
             {otpLoading
               ? "Sending Verification code..."
               : "Get verification code"}
-          </button>
+          </button> */}
         </div>
-        <div>
+        {/* <div>
           <input
             style={{
               width: "100%",
@@ -96,7 +133,8 @@ const RegistrationForm = ({
             value={otp}
             onChange={(e) => setOtp(e.target.value)}
           />
-        </div>
+        </div> */}
+
         <div>
           <input
             style={{
@@ -107,24 +145,7 @@ const RegistrationForm = ({
               marginBottom: "10px",
               fontSize: "16px",
             }}
-            placeholder="Username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            style={{
-              width: "100%",
-              padding: "12px",
-              borderRadius: "10px",
-              border: "2px solid #e74c3c",
-              marginBottom: "10px",
-              fontSize: "16px",
-            }}
-            placeholder="Password"
+            placeholder="Enter Password"
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -186,7 +207,7 @@ const RegistrationForm = ({
               marginBottom: "10px",
               fontSize: "16px",
             }}
-            placeholder=" Referral Code(optional)"
+            placeholder="Enter Referral Code"
             type="text"
             value={referralCode}
             onChange={(e) => setReferralCode(e.target.value)}
@@ -238,7 +259,8 @@ function Signup() {
   const nav = useNavigate();
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
-  const [username, setUsername] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [referralCode, setReferralCode] = useState("");
@@ -285,11 +307,10 @@ function Signup() {
       return;
     }
     const requestData = {
+      fname: firstname,
+      lname: lastname,
       email: email,
-      otp: otp,
-      name: username,
       Password: password,
-      cpassword: confirmPassword,
       referralCode: referralCode,
     };
 
@@ -297,18 +318,18 @@ function Signup() {
       const response = await axios.post("YOUR_API_ENDPOINT", requestData);
 
       if (response.status === 200) {
-        console.log("Registration successful");
-        alert("Registration successful");
-        nav("/login");
+        console.log("Redirect to verification page");
+        alert("Redirecting to verification page");
+        nav("/Verification_Email");
         // Redirect or perform other actions on successful login
       } else {
         console.log("Login failed");
-        alert("Login unsuccessful");
+        alert("Registration unsuccessful");
         // Handle login failure
       }
     } catch (error) {
       console.error("An error occurred:", error);
-      alert("Error");
+      alert("Error in registration, please try again!!!");
       // Handle error, show error messages, etc.
     }
   };
@@ -325,7 +346,7 @@ function Signup() {
       // You can handle the response as needed
     } catch (error) {
       console.error(error);
-      alert("Error");
+      alert("Network Error");
     } finally {
       setOtpLoading(false);
     }
@@ -333,6 +354,10 @@ function Signup() {
   const handelLogin = () => {
     nav("/login");
   };
+  const handelLogin1 = () => {
+    nav("/Verification_Email");
+  };
+
   const handelBack = () => {
     nav("/");
   };
@@ -341,7 +366,7 @@ function Signup() {
       <Container
         fluid
         className="centered-card-container d-flex align-items-center justify-content-center"
-        style={{ background: "#f542ef" }}
+        style={{ background: "#f542ef", height: "100%", overflow: "auto" }}
       >
         <Card className="custom-card">
           <Card.Body>
@@ -485,8 +510,10 @@ function Signup() {
                 setEmail={setEmail}
                 otp={otp}
                 setOtp={setOtp}
-                username={username}
-                setUsername={setUsername}
+                firstname={firstname}
+                setFirstname={setFirstname}
+                lastname={lastname}
+                setLastname={setLastname}
                 password={password}
                 setPassword={setPassword}
                 confirmPassword={confirmPassword}
@@ -497,6 +524,7 @@ function Signup() {
                 handelBack={handelBack}
               />
             </center>
+            <button onClick={handelLogin1}>Verification email</button>
           </Card.Body>
         </Card>
       </Container>
