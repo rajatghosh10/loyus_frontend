@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import AccServices from "./Services/AccServices";
 
 const RegistrationForm = ({
   handleGetOtp,
@@ -307,32 +308,56 @@ function Signup() {
       );
       return;
     }
-    const requestData = {
+    const data = {
       fname: firstname,
       lname: lastname,
       email: email,
-      Password: password,
+      Password: confirmPassword,
       referralCode: referralCode,
     };
 
-    try {
-      const response = await axios.post("YOUR_API_ENDPOINT", requestData);
+    // try {
+    //   const response = await axios.post("YOUR_API_ENDPOINT", data);
 
-      if (response.status === 200) {
-        console.log("Redirect to verification page");
-        alert("Redirecting to verification page");
-        nav("/Verification_Email");
-        // Redirect or perform other actions on successful login
-      } else {
-        console.log("Login failed");
-        alert("Registration unsuccessful");
-        // Handle login failure
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-      alert("Error in registration, please try again!!!");
-      // Handle error, show error messages, etc.
-    }
+    //   if (response.status === 200) {
+    //     console.log("Redirect to verification page");
+    //     alert("Redirecting to verification page");
+    //     nav("/Verification_Email");
+    //     // Redirect or perform other actions on successful login
+    //   } else {
+    //     console.log("Login failed");
+    //     alert("Registration unsuccessful");
+    //     // Handle login failure
+    //   }
+    // } catch (error) {
+    //   console.error("An error occurred:", error);
+    //   alert("Error in registration, please try again!!!");
+    //   // Handle error, show error messages, etc.
+    // }
+
+    AccServices.regi({
+      firstname: data.fname,
+      lastname: data.lname,
+      email: data.email,
+      password: data.Password,
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          alert("OK");
+          nav("/Verification_Email", { state: { email } });
+        } else {
+          alert("erorr");
+        }
+      })
+
+      .catch((err) => {
+        console.log(err.data);
+        if (!err.response) {
+          alert("Not Ok");
+          return;
+        }
+      });
   };
   const handleGetOtp = async () => {
     try {
