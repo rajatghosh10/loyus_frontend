@@ -5,7 +5,8 @@ import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
+import AccServices from "./Services/AccServices";
 function Login() {
   const nav = useNavigate();
   const [loginId, setLoginId] = useState("");
@@ -14,33 +15,50 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Prepare the data to be sent in the request body
-    const requestData = {
-      loginId: loginId,
+    AccServices.login({
+      email: loginId,
       password: password,
-    };
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          alert("Login successful");
+          nav("/afterlogin");
+        } else {
+          alert("Login unsuccessful. Please check your credentials.");
+        }
+      })
 
-    try {
-      const response = await axios.post("YOUR_API_ENDPOINT", requestData);
+      .catch((err) => {
+        // console.log(err.data);
+        if (!err.response) {
+          alert("Login unsuccessful, please check your credentials.");
+        } else {
+          alert("Login unsuccessful, please check your credentials.");
+        }
+      });
+    // try {
+    //   // Prepare the data to be sent in the request body
+    //   const requestData = {
+    //     email: loginId,
+    //     password: password,
+    //   };
 
-      if (response.status === 200) {
-        console.log("Login successful");
-        alert("Login successful");
-        nav("/afterlogin");
-        // Redirect or perform other actions on successful login
-      } else {
-        console.log("Login failed");
-        alert("Login unsuccessful, try again!");
-        // Handle login failure
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-      alert("Login unsuccessful,network error, try again!");
-      // Handle error, show error messages, etc.
-    }
+    //   // Use AccServices.login() for the API call
+    //   const response = await AccServices.login(requestData);
 
-    console.log("Login ID:", loginId);
-    console.log("Password:", password);
+    //   if (response.status === 200) {
+    //     console.log("Login successful");
+    //     alert("Login successful");
+    //     nav("/afterlogin");
+    //   } else {
+    //     console.log("Login failed");
+    //     alert("Login unsuccessful, try again!");
+    //   }
+    // } catch (error) {
+    //   console.error("An error occurred:", error);
+    //   alert("Login unsuccessful, try again!");
+    // }
   };
   const handelRegister = () => {
     nav("/signup");
