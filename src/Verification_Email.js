@@ -43,7 +43,8 @@ function Verification_Email() {
   //   }
   // };
 
-  const handleVerifyOtp = async () => {
+  const handleVerifyOtp = async (e) => {
+    e.preventDefault();
     AccServices.verifyemail({
       email: flag,
 

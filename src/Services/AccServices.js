@@ -18,6 +18,14 @@ class AccServices {
       data: data,
     });
   }
+
+  login(data) {
+    return axios({
+      method: "post",
+      url: API_HOST + "/api/login",
+      data: data,
+    });
+  }
 }
 
 export default new AccServices();
